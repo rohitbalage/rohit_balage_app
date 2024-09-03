@@ -7,6 +7,7 @@ android {
     namespace = "com.rrbofficial.rohitbalage"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.rrbofficial.rohitbalage"
         minSdk = 26
@@ -26,6 +27,8 @@ android {
             )
         }
     }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -35,6 +38,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 }
 

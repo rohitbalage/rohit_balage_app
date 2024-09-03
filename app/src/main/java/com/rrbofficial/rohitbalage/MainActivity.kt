@@ -3,6 +3,7 @@ package com.rrbofficial.rohitbalage
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -33,11 +34,54 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_youtube, R.id.nav_achievements
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Handle navigation drawer item clicks
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    Toast.makeText(this, "Home Selected", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.nav_home)
+                    drawerLayout.closeDrawers() // Close the drawer after selection
+                    true
+                }
+                R.id.nav_gallery -> {
+                    Toast.makeText(this, "Gallery Selected", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.nav_gallery)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+                R.id.nav_slideshow -> {
+                    Toast.makeText(this, "Slideshow Selected", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.nav_slideshow)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+                R.id.nav_youtube -> {
+                    Toast.makeText(this, "YouTube Selected", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.nav_youtube)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+                R.id.nav_achievements -> {
+                    Toast.makeText(this, "Achievements Selected", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.nav_achievements)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        binding.appBarMain.fab.setOnClickListener {
+            // Handle the FAB click
+            Toast.makeText(this, "FAB Clicked", Toast.LENGTH_SHORT).show()
+            // You can also add navigation or other actions here
+        }
 
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNav.setupWithNavController(navController)
@@ -51,11 +95,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.notification_icon -> {
-                // Handle notification icon click
+                Toast.makeText(this, "Notification Icon Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.menu_item -> {
-                // Handle menu icon click
+                Toast.makeText(this, "Menu Icon Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
