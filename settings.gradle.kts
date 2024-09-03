@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Rohit Balage"
 include(":app")
+include(":rrbwear")
