@@ -26,12 +26,12 @@
     <fragment
         android:id="@+id/nav_youtube"
         android:name="com.rrbofficial.rohitbalage.ui.youtube.YoutubeFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_youtube"
         tools:layout="@layout/fragment_youtube" />
 
     <fragment
         android:id="@+id/nav_achievements"
         android:name="com.rrbofficial.rohitbalage.ui.achievements.AchievementFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_achievement"
         tools:layout="@layout/fragment_status" />
 </navigation>
