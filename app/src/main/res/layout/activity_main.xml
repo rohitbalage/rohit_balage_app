@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemIconTint="@null"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
@@ -39,6 +40,7 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/CustomBottomNavigationViewStyle"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_nav_menu" />
     </FrameLayout>

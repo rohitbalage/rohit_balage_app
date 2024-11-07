@@ -1,23 +1,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/ic_menu_gallery"
+        android:icon="@drawable/house_icon_nav"
     android:title="Home" />
     <item
         android:id="@+id/nav_gallery"
-        android:icon="@drawable/ic_menu_gallery"
+        android:icon="@drawable/project_icon_nav"
     android:title="Projects" />
     <item
         android:id="@+id/nav_slideshow" 
-        android:icon="@drawable/ic_menu_gallery"
+        android:icon="@drawable/video_icon"
     android:title="Status" />
 
     <item
         android:id="@+id/nav_youtube"
-        android:icon="@drawable/ic_menu_gallery"
+        android:icon="@drawable/youtube_icon"
         android:title="Youtube" />
     <item
         android:id="@+id/nav_achievements"
-        android:icon="@drawable/ic_menu_gallery"
+        android:icon="@drawable/trophy_icon"
         android:title="Achievements" />
 </menu>

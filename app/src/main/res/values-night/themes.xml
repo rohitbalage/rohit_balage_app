@@ -13,4 +13,9 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="CustomBottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@null</item> <!-- Disable icon tinting -->
+        <!-- Optional: Add itemTextColor here if needed -->
+    </style>
+
 </resources>
