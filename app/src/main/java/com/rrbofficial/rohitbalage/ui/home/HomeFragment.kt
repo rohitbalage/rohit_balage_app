@@ -1,6 +1,6 @@
 package com.rrbofficial.rohitbalage.ui.home
 
-import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,28 +21,13 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // Start rotation animation for the update text
-        val updateTextView: TextView = binding.root.findViewById(R.id.update_text)
-        startRotationAnimation(updateTextView)
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+
 
         return root
-    }
-
-    private fun startRotationAnimation(view: View) {
-        val animator = ObjectAnimator.ofFloat(view, "rotation", 0f, 360f)
-        animator.duration = 2000 // Animation duration in milliseconds
-        animator.repeatCount = ObjectAnimator.INFINITE // Repeat indefinitely
-        animator.start() // Start the animation
     }
 
     override fun onDestroyView() {
