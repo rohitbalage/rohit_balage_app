@@ -40,7 +40,7 @@
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/CustomBottomNavigationViewStyle"
+            app:itemIconTint="@null"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_nav_menu" />
     </FrameLayout>

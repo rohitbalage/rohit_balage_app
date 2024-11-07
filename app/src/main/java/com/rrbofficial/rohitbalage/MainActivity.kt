@@ -77,6 +77,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+
+        val fab = binding.appBarMain.fab
+        fab.imageTintList = null
         binding.appBarMain.fab.setOnClickListener {
             // Handle the FAB click
             Toast.makeText(this, "FAB Clicked", Toast.LENGTH_SHORT).show()
@@ -84,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
+       bottomNav.itemIconTintList = null
         bottomNav.setupWithNavController(navController)
     }
 
