@@ -95,5 +95,7 @@ dependencies {
     // super bottom sheet
     implementation("com.github.andrefrsousa:SuperBottomSheet:2.0.0")
 
-
+    //material design
+    implementation("com.google.android.material:material:1.9.0")
 }
+
