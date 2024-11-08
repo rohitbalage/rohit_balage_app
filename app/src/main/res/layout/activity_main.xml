@@ -43,6 +43,7 @@
             app:itemIconTint="@null"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_nav_menu" />
+
     </FrameLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

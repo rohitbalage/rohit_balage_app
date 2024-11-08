@@ -53,7 +53,8 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.drawerlayout) // DrawerLayout support
     implementation(libs.androidx.recyclerview) // RecyclerView
-    implementation(libs.androidx.fragment) // Fragment KTX
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.annotation) // Fragment KTX
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -61,4 +62,9 @@ dependencies {
 
     //material design:
     implementation(libs.material) // Latest version
+
+    // youth banner
+    implementation("io.github.youth5201314:banner:2.2.2")
+
+    implementation("com.github.bumptech.glide:glide:4.15.1") // Core Glide library
 }
