@@ -22,6 +22,7 @@ composeMaterial = "1.2.1"
 composeFoundation = "1.2.1"
 activityCompose = "1.7.2"
 coreSplashscreen = "1.0.1"
+spinmenu = "1.0.0"
 tiles = "1.1.0"
 tilesMaterial = "1.1.0"
 horologistComposeTools = "0.4.8"
@@ -67,6 +68,7 @@ horologist-tiles = { group = "com.google.android.horologist", name = "horologist
 androidx-watchface-complications-data-source-ktx = { group = "androidx.wear.watchface", name = "watchface-complications-data-source-ktx", version.ref = "watchfaceComplicationsDataSourceKtx" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }  # Add Fragment KTX library entry
+spinmenu = { module = "com.github.hitomis:SpinMenu", version.ref = "spinmenu" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
