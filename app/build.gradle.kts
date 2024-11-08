@@ -54,7 +54,8 @@ dependencies {
     implementation(libs.androidx.drawerlayout) // DrawerLayout support
     implementation(libs.androidx.recyclerview) // RecyclerView
     implementation(libs.androidx.fragment)
-    implementation(libs.androidx.annotation) // Fragment KTX
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.activity) // Fragment KTX
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
