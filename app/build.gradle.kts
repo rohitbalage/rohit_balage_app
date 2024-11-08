@@ -65,6 +65,35 @@ dependencies {
 
     // youth banner
     implementation("io.github.youth5201314:banner:2.2.2")
+    // Core Glide library
+    implementation("com.github.bumptech.glide:glide:4.15.1")
 
-    implementation("com.github.bumptech.glide:glide:4.15.1") // Core Glide library
+    //firebase libraries
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.database)
+    implementation(libs.firebase.firestore)
+
+    //one signal -notification
+    implementation("com.onesignal:OneSignal:[5.0.0, 5.99.99]")
+
+    // fancy toast - toast message
+    implementation("io.github.shashank02051997:FancyToast:2.0.2")
+
+    //motion toast
+    implementation("com.github.Spikeysanju:MotionToast:1.4")
+
+    //mp-chart library
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    //rate bar
+    implementation("com.github.hotchemi:android-rate:1.0.1")
+
+    //asthetic dialogues
+    implementation("com.github.gabriel-TheCode:AestheticDialogs:1.3.8")
+
+    // super bottom sheet
+    implementation("com.github.andrefrsousa:SuperBottomSheet:2.0.0")
+
+
 }
