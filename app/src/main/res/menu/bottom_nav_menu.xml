@@ -9,8 +9,8 @@
     android:title="Projects" />
     <item
         android:id="@+id/nav_slideshow" 
-        android:icon="@drawable/video_icon"
-    android:title="Status" />
+        android:icon="@drawable/github_social"
+    android:title="Gituhb" />
 
     <item
         android:id="@+id/nav_youtube"
@@ -19,5 +19,5 @@
     <item
         android:id="@+id/nav_achievements"
         android:icon="@drawable/trophy_icon"
-        android:title="Achievements" />
+        android:title="Accolades" />
 </menu>

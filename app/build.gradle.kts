@@ -97,10 +97,12 @@ dependencies {
     implementation("com.github.andrefrsousa:SuperBottomSheet:2.0.0")
 
     //material design
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.12.0")
 
     //app intro
-    implementation("com.github.paolorotolo:appintro:4.1.0")
+//    implementation("com.github.paolorotolo:appintro:4.1.0")
+
+
 
     //yo yo animation
     implementation("com.daimajia.androidanimations:library:2.4@aar")
@@ -112,9 +114,12 @@ dependencies {
     implementation("com.airbnb.android:lottie:5.2.0")
 
     //assertive touch button
-    implementation("com.github.mmoamenn:Assertive-Touch:1.2.0")
+//    implementation("com.github.mmoamenn:Assertive-Touch:1.2.0")
 
     //floating menu
     implementation("com.github.rjsvieira:floatingMenu:1.3.0")
+
+    //waveview
+    implementation("com.github.john990:WaveView:v0.9")
 }
 
