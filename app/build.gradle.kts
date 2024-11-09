@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.rrbofficial.rohitbalage"
-        minSdk = 26
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -119,7 +119,17 @@ dependencies {
     //floating menu
     implementation("com.github.rjsvieira:floatingMenu:1.3.0")
 
-    //waveview
+    //waveview -- animation
     implementation("com.github.john990:WaveView:v0.9")
+
+    //foldable layout -- image
+    implementation("com.vincentbrison.openlibraries.android:foldablelayout:0.0.1@aar")
+
+    //vorolay -- image collage
+    implementation("com.github.Quatja:Vorolay:1.0.1")
+
+    // tap sphere view
+    implementation("com.github.magic-goop:tag-sphere:1.0.0")
+
 }
 
