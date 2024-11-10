@@ -11,4 +11,5 @@
     <color name="grey_100">#FFE0E0E0</color>
     <color name="grey_300">#FF9E9E9E</color>
   <color name="green">#7fff00</color>
+    <color name="semiTransparentBackground">#80000000</color>
 </resources>

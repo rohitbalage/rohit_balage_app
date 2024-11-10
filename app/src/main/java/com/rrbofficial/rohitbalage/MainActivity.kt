@@ -19,7 +19,7 @@ import com.amazonaws.mobile.client.UserStateDetails
 import com.rrbofficial.rohitbalage.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : MyBaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding

@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
+import com.rrbofficial.rohitbalage.MyBaseActivity
 import com.rrbofficial.rohitbalage.R
 import com.rrbofficial.rohitbalage.databinding.FragmentGithubBinding
 
@@ -28,19 +29,21 @@ class GithubFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout using data binding
+        // Inflate the layout
         _binding = FragmentGithubBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        // Initialize the ViewModel
+        // Initialize ViewModel
         githubViewModel = ViewModelProvider(this).get(GithubViewModel::class.java)
 
-        // Load the header fragment into the FrameLayout
-        childFragmentManager.commit {
-            replace(R.id.headerFragmentContainer, GithubHeaderFragment())
+        // Observe loading state
+        githubViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            val activity = requireActivity() as? MyBaseActivity
+            activity?.let {
+                if (isLoading) it.showProgressBar() else it.hideProgressBar()
+            }
         }
 
-        // Configure the WebView
+        // Configure WebView
         binding.webView.apply {
             settings.javaScriptEnabled = true
             settings.domStorageEnabled = true
@@ -48,15 +51,20 @@ class GithubFragment : Fragment() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView,
                     request: WebResourceRequest
-                ): Boolean {
-                    return false // Allow URL loading within WebView
+                ): Boolean = false
+            }
+
+            webChromeClient = object : WebChromeClient() {
+                override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                    if (newProgress < 100) githubViewModel.setLoading(true)
+                    else githubViewModel.setLoading(false)
                 }
             }
-            webChromeClient = WebChromeClient() // For advanced WebView features
+
             loadUrl("https://github.com/rohitbalage?tab=repositories")
         }
 
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
