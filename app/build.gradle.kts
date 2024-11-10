@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.rrbofficial.rohitbalage"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -130,6 +130,15 @@ dependencies {
 
     // tap sphere view
     implementation("com.github.magic-goop:tag-sphere:1.0.0")
+
+    implementation("uk.co.samuelwall:material-tap-target-prompt:3.3.2")
+
+    //AWS
+   implementation("com.amazonaws:aws-android-sdk-ddb:2.13.+")
+
+    implementation("com.amazonaws:aws-android-sdk-mobile-client:2.13.+@aar") {
+        isTransitive = true
+    }
 
 }
 

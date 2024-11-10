@@ -1,5 +1,11 @@
 pluginManagement {
     repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven("https://jitpack.io") // Add JitPack here for plugin dependencies
+        maven("https://maven.google.com")
+
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -7,10 +13,6 @@ pluginManagement {
                 includeGroupByRegex("androidx.*")
             }
         }
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-        maven("https://jitpack.io") // Add JitPack here for plugin dependencies
     }
 }
 

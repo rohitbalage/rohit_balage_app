@@ -1,6 +1,7 @@
 package com.rrbofficial.rohitbalage
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -12,6 +13,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.amazonaws.mobile.client.AWSMobileClient
+import com.amazonaws.mobile.client.Callback
+import com.amazonaws.mobile.client.UserStateDetails
 import com.rrbofficial.rohitbalage.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -22,6 +26,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        // Initialize AWS Mobile Client
+//        AWSMobileClient.getInstance().initialize(this, object : Callback<UserStateDetails> {
+//            override fun onResult(result: UserStateDetails?) {
+//                Log.d("AWS", "AWSMobileClient initialized: ${result?.userState}")
+//            }
+//
+//            override fun onError(e: Exception?) {
+//                Log.e("AWS", "Initialization error", e)
+//            }
+//        })
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
