@@ -101,8 +101,8 @@ class MainActivity : MyBaseActivity() {
             Toast.makeText(this, "FAB Clicked", Toast.LENGTH_SHORT).show()
             // You can also add navigation or other actions here
         }
-
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        // MANTA -2 Hide the icon tilt in the bottom navigation view
        bottomNav.itemIconTintList = null
         bottomNav.setupWithNavController(navController)
     }
