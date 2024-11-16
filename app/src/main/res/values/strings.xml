@@ -24,4 +24,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="ReportBug">Report bug</string>
+    <string name="github">Github</string>
+    <string name="projects">Projects</string>
+    <string name="message_me">Message Me</string>
+    <string name="request_location">Request Location</string>
+    <string name="my_photos">My Photos</string>
 </resources>

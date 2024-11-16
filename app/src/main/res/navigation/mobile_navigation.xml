@@ -12,15 +12,15 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_projects"
         android:name="com.rrbofficial.rohitbalage.ui.projects.ProjectFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/projects"
         tools:layout="@layout/fragment_project" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_github"
         android:name="com.rrbofficial.rohitbalage.ui.github.GithubFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/github"
         tools:layout="@layout/fragment_github" />
 
     <fragment
@@ -34,4 +34,21 @@
         android:name="com.rrbofficial.rohitbalage.ui.achievements.AchievementFragment"
         android:label="@string/menu_achievement"
         tools:layout="@layout/fragment_github" />
+    <fragment
+        android:id="@+id/messageRohitFragment"
+        android:name="com.rrbofficial.rohitbalage.MessageRohitFragment"
+        android:label="fragment_message_rohit"
+        tools:layout="@layout/fragment_message_rohit" />
+    <fragment
+        android:id="@+id/requestRohitLocationFragment"
+        android:name="com.rrbofficial.rohitbalage.RequestRohitLocationFragment"
+        android:label="fragment_request_rohit_location"
+        tools:layout="@layout/fragment_request_rohit_location" />
+    <fragment
+        android:id="@+id/myPhotosFragment"
+        android:name="com.rrbofficial.rohitbalage.MyPhotosFragment"
+        android:label="fragment_my_photos"
+        tools:layout="@layout/fragment_my_photos" />
+
+
 </navigation>

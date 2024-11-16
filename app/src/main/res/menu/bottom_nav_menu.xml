@@ -4,11 +4,11 @@
         android:icon="@drawable/house_icon_nav"
     android:title="Home" />
     <item
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_projects"
         android:icon="@drawable/project_icon_nav"
     android:title="Projects" />
     <item
-        android:id="@+id/nav_slideshow" 
+        android:id="@+id/nav_github"
         android:icon="@drawable/github_social"
     android:title="Gituhb" />
 
