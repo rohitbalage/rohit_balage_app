@@ -23,6 +23,7 @@ class MainActivity : MyBaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private val navController by lazy { findNavController(R.id.nav_host_fragment) }  // Correctly using `val`
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,74 +42,44 @@ class MainActivity : MyBaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.appBarMain.toolbar)
+        setSupportActionBar(binding.toolbar)
 
-        val drawerLayout: DrawerLayout = binding.drawerLayout
-        val navView: NavigationView = binding.navView
-        navView.itemIconTintList = null
-        val navController = findNavController(R.id.nav_host_fragment)
+        // Set up Bottom Navigation with the same NavController
+        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_youtube, R.id.nav_achievements
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        bottomNav.itemIconTintList = null  // Optional: Set to null to disable icon tint
+        bottomNav.setupWithNavController(navController)  // Link Bottom Navigation with NavController
 
-        // Handle navigation drawer item clicks
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
+        // Handle Bottom Navigation Item Clicks
+        bottomNav.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.nav_home -> {
-                    Toast.makeText(this, "Home Selected", Toast.LENGTH_SHORT).show()
                     navController.navigate(R.id.nav_home)
-                    drawerLayout.closeDrawers() // Close the drawer after selection
                     true
                 }
-                R.id.nav_gallery -> {
-                    Toast.makeText(this, "Gallery Selected", Toast.LENGTH_SHORT).show()
-                    navController.navigate(R.id.nav_gallery)
-                    drawerLayout.closeDrawers()
+                R.id.nav_github -> {
+                    navController.navigate(R.id.nav_github)
                     true
                 }
-                R.id.nav_slideshow -> {
-                    Toast.makeText(this, "Slideshow Selected", Toast.LENGTH_SHORT).show()
-                    navController.navigate(R.id.nav_slideshow)
-                    drawerLayout.closeDrawers()
-                    true
-                }
-                R.id.nav_youtube -> {
-                    Toast.makeText(this, "YouTube Selected", Toast.LENGTH_SHORT).show()
-                    navController.navigate(R.id.nav_youtube)
-                    drawerLayout.closeDrawers()
+                R.id.nav_projects -> {
+                    navController.navigate(R.id.nav_projects)
                     true
                 }
                 R.id.nav_achievements -> {
-                    Toast.makeText(this, "Achievements Selected", Toast.LENGTH_SHORT).show()
                     navController.navigate(R.id.nav_achievements)
-                    drawerLayout.closeDrawers()
+                    true
+                }
+                R.id.nav_youtube -> {
+                    navController.navigate(R.id.nav_youtube)
                     true
                 }
                 else -> false
             }
         }
-
-
-        val fab = binding.appBarMain.fab
-        fab.imageTintList = null
-        binding.appBarMain.fab.setOnClickListener {
-            // Handle the FAB click
-            Toast.makeText(this, "FAB Clicked", Toast.LENGTH_SHORT).show()
-            // You can also add navigation or other actions here
-        }
-        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
-        // MANTA -2 Hide the icon tilt in the bottom navigation view
-       bottomNav.itemIconTintList = null
-        bottomNav.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu) // Inflate the menu
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
     }
 
@@ -118,16 +89,11 @@ class MainActivity : MyBaseActivity() {
                 Toast.makeText(this, "Notification Icon Clicked", Toast.LENGTH_SHORT).show()
                 true
             }
-            R.id.menu_item -> {
-                Toast.makeText(this, "Menu Icon Clicked", Toast.LENGTH_SHORT).show()
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_messageme"
+    app:startDestination="@id/messageRohitFragment2">
+
+    <fragment
+        android:id="@+id/messageRohitFragment2"
+        android:name="com.rrbofficial.rohitbalage.MessageRohitFragment"
+        android:label="fragment_message_rohit"
+        tools:layout="@layout/fragment_message_rohit" />
+</navigation>

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph_achievements">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_achievements"
+    app:startDestination="@id/achievementFragment">
 
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.rrbofficial.rohitbalage.ui.achievements.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" />
 </navigation>

@@ -5,22 +5,22 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/messageRohitFragment"
             android:icon="@drawable/house_icon_nav"
-            android:title="@string/menu_home" />
+            android:title="@string/message_me" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/requestRohitLocationFragment"
             android:icon="@drawable/house_icon_nav"
-            android:title="@string/menu_gallery" />
+            android:title="@string/request_location" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/house_icon_nav"
             android:title="@string/menu_slideshow" />
 
         <item
-            android:id="@+id/nav_reportbug"
+            android:id="@+id/myPhotosFragment"
             android:icon="@drawable/bug"
-            android:title="@string/ReportBug" />" />
+            android:title="@string/my_photos" />
 
     </group>
 </menu>
