@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -30,11 +31,12 @@ android {
 
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        // Java compile target 17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17" // matches Java target
     }
     buildFeatures {
         viewBinding = true
@@ -128,6 +130,21 @@ dependencies {
     //vorolay -- image collage
     implementation("com.github.Quatja:Vorolay:1.0.1")
 
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // OkHttp Logging Interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+
+    // Kotlin Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
+
     // tap sphere view
     implementation("com.github.magic-goop:tag-sphere:1.0.0")
 
@@ -135,6 +152,8 @@ dependencies {
 
     //AWS
    implementation("com.amazonaws:aws-android-sdk-ddb:2.13.+")
+
+
 
     implementation("com.amazonaws:aws-android-sdk-mobile-client:2.13.+@aar") {
         isTransitive = true

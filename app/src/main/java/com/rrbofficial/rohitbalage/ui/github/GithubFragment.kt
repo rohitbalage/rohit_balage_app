@@ -9,9 +9,7 @@ import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.rrbofficial.rohitbalage.MyBaseActivity
 import com.rrbofficial.rohitbalage.R
@@ -22,8 +20,7 @@ class GithubFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var githubViewModel: GithubViewModel
-
-    private var isInitialLoad: Boolean = true // Track whether it's the initial page load
+    private var isInitialLoad: Boolean = true // Track initial WebView load
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreateView(
@@ -36,24 +33,33 @@ class GithubFragment : Fragment() {
         // Initialize ViewModel
         githubViewModel = ViewModelProvider(this).get(GithubViewModel::class.java)
 
-        // MANTA-2 Observe loading state for the initial load
+        // Observe loading state for the initial WebView load
         githubViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             val activity = requireActivity() as? MyBaseActivity
             activity?.let {
                 if (isLoading && isInitialLoad) {
-                    binding.webView.visibility = View.GONE // Hide WebView during initial load
+                    binding.webView.visibility = View.GONE
                     it.showProgressBar()
                 } else {
                     it.hideProgressBar()
-                    binding.webView.visibility = View.VISIBLE // Show WebView once loaded
+                    binding.webView.visibility = View.VISIBLE
                 }
             }
         }
 
-        // Configure WebView
+        // Setup WebView
         setupWebView(savedInstanceState)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Add GithubHeaderFragment to the FrameLayout
+        childFragmentManager.beginTransaction()
+            .replace(R.id.headerFragmentContainer, GithubHeaderFragment())
+            .commit()
     }
 
     private fun setupWebView(savedInstanceState: Bundle?) {
@@ -68,10 +74,9 @@ class GithubFragment : Fragment() {
                 ): Boolean = false
 
                 override fun onPageFinished(view: WebView?, url: String?) {
-                    // Only handle visibility for the initial load
                     if (isInitialLoad) {
                         githubViewModel.setLoading(false)
-                        isInitialLoad = false // Mark initial load as complete
+                        isInitialLoad = false
                     }
                 }
             }
@@ -79,7 +84,7 @@ class GithubFragment : Fragment() {
             webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
                     if (isInitialLoad && newProgress < 100) {
-                        githubViewModel.setLoading(true) // Show progress bar only during initial load
+                        githubViewModel.setLoading(true)
                     }
                 }
             }
@@ -95,7 +100,7 @@ class GithubFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        binding.webView.saveState(outState) // Save WebView state
+        binding.webView.saveState(outState)
     }
 
     override fun onDestroyView() {

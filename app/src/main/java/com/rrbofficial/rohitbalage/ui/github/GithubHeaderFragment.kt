@@ -1,60 +1,113 @@
 package com.rrbofficial.rohitbalage.ui.github
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.google.gson.GsonBuilder
 import com.rrbofficial.rohitbalage.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Path
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+// Retrofit API interface
+interface GithubApi {
+    @GET("users/{username}")
+    suspend fun getUser(@Path("username") username: String): GithubUser
+}
 
-/**
- * A simple [Fragment] subclass.
- * Use the [GithubHeaderFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GithubHeaderFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private val githubUser = "rohitbalage" // Your GitHub username
+    private lateinit var api: GithubApi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+        // Logging interceptor to log raw JSON
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
         }
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.github.com/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        api = retrofit.create(GithubApi::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_github_header, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_github_header, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment GithubHeaderFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            GithubHeaderFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val profilePic = view.findViewById<ImageView>(R.id.github_profile_pic)
+        val name = view.findViewById<TextView>(R.id.github_name)
+        val username = view.findViewById<TextView>(R.id.github_username)
+        val bio = view.findViewById<TextView>(R.id.github_bio)
+        val repos = view.findViewById<TextView>(R.id.github_repos)
+        val followers = view.findViewById<TextView>(R.id.github_followers)
+        val following = view.findViewById<TextView>(R.id.github_following)
+        val company = view.findViewById<TextView>(R.id.github_company)
+        val location = view.findViewById<TextView>(R.id.github_location)
+        val email = view.findViewById<TextView>(R.id.github_email)
+        val twitter = view.findViewById<TextView>(R.id.x_twitter)
+        val hireable = view.findViewById<TextView>(R.id.github_hireable)
+        val updatedAt = view.findViewById<TextView>(R.id.github_updated_at)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val user = api.getUser(githubUser)
+
+                // Log parsed object
+                Log.d("GITHUB_RESPONSE", user.toString())
+
+                // Log pretty JSON
+                val gson = GsonBuilder().setPrettyPrinting().create()
+                Log.d("GITHUB_RESPONSE_JSON", gson.toJson(user))
+
+                withContext(Dispatchers.Main) {
+                    name.text = user.name ?: "No Name"
+                    username.text = "@${user.login}"
+                    bio.text = user.bio ?: "No bio available"
+                    repos.text = "Repos: ${user.public_repos}"
+                    followers.text = "Followers: ${user.followers}"
+                    following.text = "Following: ${user.following}"
+                    company.text = user.company ?: "No company info"
+                    location.text = user.location ?: "No location info"
+                    email.text = user.email ?: "No email"
+                    twitter.text = user.twitter_username?.let { "@$it" } ?: "No Twitter"
+                    hireable.text = if (user.hireable == true) "Yes" else "No"
+                    updatedAt.text = user.updated_at ?: "No update info"
+
+                    Glide.with(requireContext())
+                        .load(user.avatar_url)
+                        .into(profilePic)
                 }
+            } catch (e: Exception) {
+                Log.e("GITHUB_RESPONSE", "Error fetching user", e)
             }
+        }
+
+        return view
     }
 }

@@ -1,16 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.github.GithubHeaderFragment">
+    android:background="@android:color/white"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="GITHUB HEADER"
-       android:gravity="center"
-        android:textSize="50dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-</FrameLayout>
+        <!-- Profile -->
+        <ImageView
+            android:id="@+id/github_profile_pic"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/github_social"
+            android:padding="4dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="GitHub Profile Picture"/>
+
+        <TextView
+            android:id="@+id/github_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/github_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@username"
+            android:textSize="16sp"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/github_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bio here..."
+            android:layout_marginTop="6dp"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Extra info -->
+        <TextView
+            android:id="@+id/github_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Company"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/github_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/github_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/x_twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Twitter"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/github_hireable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hireable"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/github_updated_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Updated At"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:textColor="@android:color/black"/>
+
+        <!-- Stats Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/github_repos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Repos: 0"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/github_followers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Followers: 0"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/github_following"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Following: 0"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

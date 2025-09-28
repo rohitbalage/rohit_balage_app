@@ -33,7 +33,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17" // highest supported by Kotlin 1.8.21
     }
     buildFeatures {
         compose = true
