@@ -74,8 +74,8 @@ class MainActivity : MyBaseActivity() {
                     true
                 }
 
-                R.id.nav_youtube -> {
-                    navController.navigate(R.id.nav_youtube)
+                R.id.nav_settings -> {
+                    navController.navigate(R.id.nav_settings)
                     true
                 }
 
