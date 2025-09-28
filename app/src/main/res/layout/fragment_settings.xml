@@ -10,15 +10,18 @@
     <ImageView
         android:id="@+id/settings_header"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/rohit" />
+        android:src="@drawable/rohit"
+        android:contentDescription="@string/app_name" />
 
-    <!-- Placeholder text -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Settings Screen"
-        android:textSize="20sp" />
+    <!-- Settings Options List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_settings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
+
 </LinearLayout>
