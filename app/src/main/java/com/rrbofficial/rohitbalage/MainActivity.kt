@@ -73,6 +73,13 @@ class MainActivity : MyBaseActivity() {
                     navController.navigate(R.id.nav_youtube)
                     true
                 }
+
+                R.id.nav_youtube -> {
+                    navController.navigate(R.id.nav_youtube)
+                    true
+                }
+
+
                 else -> false
             }
         }

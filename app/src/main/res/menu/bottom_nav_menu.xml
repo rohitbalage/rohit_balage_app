@@ -16,8 +16,10 @@
         android:id="@+id/nav_youtube"
         android:icon="@drawable/youtube_icon"
         android:title="Youtube" />
+
     <item
         android:id="@+id/nav_achievements"
-        android:icon="@drawable/trophy_icon"
-        android:title="Accolades" />
+        android:icon="@drawable/setting_icon"
+        android:title="@string/action_settings" />
+
 </menu>
